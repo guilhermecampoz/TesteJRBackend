@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vitor\\Desktop\\Teste-Junior\\TesteJRBackend\\apiToDo\\apiToDo.csproj": {}
+    "C:\\Users\\samsung\\Desktop\\TesteJRBackend\\apiToDo\\apiToDo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vitor\\Desktop\\Teste-Junior\\TesteJRBackend\\apiToDo\\apiToDo.csproj": {
+    "C:\\Users\\samsung\\Desktop\\TesteJRBackend\\apiToDo\\apiToDo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitor\\Desktop\\Teste-Junior\\TesteJRBackend\\apiToDo\\apiToDo.csproj",
+        "projectUniqueName": "C:\\Users\\samsung\\Desktop\\TesteJRBackend\\apiToDo\\apiToDo.csproj",
         "projectName": "apiToDo",
-        "projectPath": "C:\\Users\\vitor\\Desktop\\Teste-Junior\\TesteJRBackend\\apiToDo\\apiToDo.csproj",
-        "packagesPath": "C:\\Users\\vitor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitor\\Desktop\\Teste-Junior\\TesteJRBackend\\apiToDo\\obj\\",
+        "projectPath": "C:\\Users\\samsung\\Desktop\\TesteJRBackend\\apiToDo\\apiToDo.csproj",
+        "packagesPath": "C:\\Users\\samsung\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samsung\\Desktop\\TesteJRBackend\\apiToDo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\vitor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\samsung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,8 +25,8 @@
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/capys/Capys.Portais/_packaging/CapysIT.Developers/nuget/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net5.0": {
@@ -66,24 +66,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.17, 5.0.17]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -92,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }
