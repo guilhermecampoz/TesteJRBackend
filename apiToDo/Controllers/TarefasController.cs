@@ -12,6 +12,9 @@ namespace apiToDo.Controllers
         [HttpGet("lstTarefas")]
         public ActionResult lstTarefas()
         {
+        [HttpGet]
+        public ActionResult GetAll()
+        {
             try
             {
                 var tarefas = new Tarefas();
@@ -24,8 +27,8 @@ namespace apiToDo.Controllers
             }
         }
 
-        [HttpPost("InserirTarefas")]
-        public ActionResult InserirTarefas([FromBody] TarefaDTO Request)
+        [HttpPost]
+        public ActionResult Create([FromBody] TarefaDTO Request)
         {
             try
             {
@@ -37,12 +40,12 @@ namespace apiToDo.Controllers
 
             catch (Exception ex)
             {
-                return StatusCode(400, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
+                return StatusCode(500, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
             }
         }
 
-        [HttpGet("DeletarTarefa")]
-        public ActionResult DeleteTask([FromQuery] int ID_TAREFA)
+        [HttpDelete]
+        public ActionResult Delete([FromQuery] int ID_TAREFA)
         {
             try
             {
@@ -52,7 +55,7 @@ namespace apiToDo.Controllers
 
             catch (Exception ex)
             {
-                return StatusCode(400, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
+                return StatusCode(500, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
             }
         }
     }
