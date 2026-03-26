@@ -22,7 +22,11 @@ namespace apiToDo.Controllers
             try
             {
                 var result = _service.ListarTarefas();
-                return StatusCode(200, result.Valor);
+
+                if(result.ehSucesso)
+                    return StatusCode(200, result.Valor);
+
+                return StatusCode(500, result.Erros);
             }
             catch (Exception ex)
             {
