@@ -1,5 +1,7 @@
+﻿using apiToDo.Common;
 ﻿using apiToDo.DTO;
 using apiToDo.Models;
+using apiToDo.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -9,16 +11,19 @@ namespace apiToDo.Controllers
     [Route("[controller]")]
     public class TarefasController : ControllerBase
     {
-        [HttpGet("lstTarefas")]
-        public ActionResult lstTarefas()
+        private TarefaService _service;
+        public TarefasController(TarefaService service)
         {
+            _service = service;
+        }
+
         [HttpGet]
         public ActionResult GetAll()
         {
             try
             {
-                var tarefas = new Tarefas();
-                return StatusCode(200, tarefas.lstTarefas());
+                var result = _service.ListarTarefas();
+                return StatusCode(200, result.Valor);
             }
 
             catch (Exception ex)
