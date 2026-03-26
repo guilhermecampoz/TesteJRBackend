@@ -71,5 +71,28 @@ namespace apiToDo.Controllers
                 return StatusCode(500, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
             }
         }
+
+        [HttpPut("{id}")]
+        public ActionResult Update(int id, [FromBody] TarefaDTO request)
+        {
+            try
+            {
+                var result = _service.AtualizarTarefa(id, request);
+
+                if (result.ehSucesso)
+                    return StatusCode(200, result.Valor);
+
+                return result.TipoErro switch
+                {
+                    Erro.NotFound => StatusCode(404, result.Erros),
+                    Erro.Validation => StatusCode(400, result.Erros),
+                    _ => StatusCode(500, result.Erros)
+                };
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
+            }
+        }
     }
 }

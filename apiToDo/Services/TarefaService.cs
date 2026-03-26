@@ -71,5 +71,29 @@ namespace apiToDo.Services
                 throw ex;
             }
         }
+
+        public Result<List<Tarefa>> AtualizarTarefa(int ID_TAREFA, TarefaDTO request)
+        {
+            try
+            {
+                if (request == null || string.IsNullOrEmpty(request.DS_TAREFA))
+                {
+                    return Result<List<Tarefa>>.Falha(Erro.Validation, new List<string> { "O nome da tarefa não pode ser vazio." });
+                }
+
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == ID_TAREFA);
+
+                if (tarefa == null)
+                    return Result<List<Tarefa>>.Falha(Erro.NotFound, new List<string> { "Não foi encontrada uma tarefa com o Id informado." });
+
+                tarefa.DS_TAREFA = request.DS_TAREFA;
+
+                return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
