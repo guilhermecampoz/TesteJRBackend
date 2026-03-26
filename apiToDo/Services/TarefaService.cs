@@ -32,7 +32,7 @@ namespace apiToDo.Services
         {
             try
             {
-                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == id);
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.Id == id);
                 if (tarefa == null)
                     return Result<Tarefa>.Falha(Erro.NotFound, new List<string> { "Não foi encontrado tarefa com o Id informado." });
 
@@ -48,15 +48,15 @@ namespace apiToDo.Services
         {
             try
             {
-                if (request == null || string.IsNullOrEmpty(request.DS_TAREFA))
+                if (request == null || string.IsNullOrEmpty(request.Titulo))
                 {
                     return Result<List<Tarefa>>.Falha(Erro.Validation, new List<string> { "O nome da tarefa não pode ser vazio." });
                 }
 
                 int id = _data.Count;
                 Tarefa tarefa = new Tarefa();
-                tarefa.DS_TAREFA = request.DS_TAREFA;
-                tarefa.ID_TAREFA = id;
+                tarefa.Titulo = request.Titulo;
+                tarefa.Id = id;
                 _data.Tarefas.Add(tarefa);
 
                 return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
@@ -67,12 +67,12 @@ namespace apiToDo.Services
             }
         }
         // recebe via parâmetro o id da tarefa informada na query
-        public Result<List<Tarefa>> DeletarTarefa(int ID_TAREFA)
+        public Result<List<Tarefa>> DeletarTarefa(int id)
         {
             try
             {
                 // pesquisa no "banco" se há alguma tarefa com o Id informado na query
-                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == ID_TAREFA);
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.Id == id);
                 // Valida se não encontrou
                 if (tarefa == null)
                     // quando não encontra retorna falha do result pattern com tipo de erro NotFound para poder usar o status code correto na controller
@@ -88,21 +88,21 @@ namespace apiToDo.Services
             }
         }
 
-        public Result<List<Tarefa>> AtualizarTarefa(int ID_TAREFA, TarefaDTO request)
+        public Result<List<Tarefa>> AtualizarTarefa(int id, TarefaDTO request)
         {
             try
             {
-                if (request == null || string.IsNullOrEmpty(request.DS_TAREFA))
+                if (request == null || string.IsNullOrEmpty(request.Titulo))
                 {
                     return Result<List<Tarefa>>.Falha(Erro.Validation, new List<string> { "O nome da tarefa não pode ser vazio." });
                 }
 
-                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == ID_TAREFA);
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.Id == id);
 
                 if (tarefa == null)
                     return Result<List<Tarefa>>.Falha(Erro.NotFound, new List<string> { "Não foi encontrada uma tarefa com o Id informado." });
 
-                tarefa.DS_TAREFA = request.DS_TAREFA;
+                tarefa.Titulo = request.Titulo;
 
                 return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
             }

@@ -2,7 +2,7 @@
 {
     public class Tarefa
     {
-        public int ID_TAREFA { get; set; }
-        public string DS_TAREFA { get; set; }
+        public int Id { get; set; }
+        public string Titulo { get; set; }
     }
 }

@@ -9,18 +9,18 @@ namespace apiToDo.Data
         {
             new Tarefa
             {
-                ID_TAREFA = 1,
-                DS_TAREFA = "Fazer Compras"
+                Id = 1,
+                Titulo = "Fazer Compras"
             },
             new Tarefa
             {
-                ID_TAREFA = 2,
-                DS_TAREFA = "Fazer Atividade Faculdade"
+                Id = 2,
+                Titulo = "Fazer Atividade Faculdade"
             },
             new Tarefa
             {
-                ID_TAREFA = 3,
-                DS_TAREFA = "Subir Projeto de Teste no GitHub"
+                Id = 3,
+                Titulo = "Subir Projeto de Teste no GitHub"
             }
         };
 
