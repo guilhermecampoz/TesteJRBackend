@@ -28,6 +28,22 @@ namespace apiToDo.Services
             }
         }
 
+        public Result<Tarefa> ObterTarefa(int id)
+        {
+            try
+            {
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == id);
+                if (tarefa == null)
+                    return Result<Tarefa>.Falha(Erro.NotFound, new List<string> { "Não foi encontrado tarefa com o Id informado." });
+
+                return Result<Tarefa>.Sucesso(tarefa);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Result<List<Tarefa>> InserirTarefa(TarefaDTO request)
         {
             try

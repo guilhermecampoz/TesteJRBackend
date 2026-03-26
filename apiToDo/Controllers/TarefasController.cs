@@ -30,6 +30,27 @@ namespace apiToDo.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult GetById(int id)
+        {
+            try
+            {
+                var result = _service.ObterTarefa(id);
+
+                if (result.ehSucesso)
+                    return StatusCode(200, result.Valor);
+
+                return result.TipoErro switch
+                {
+                    Erro.NotFound => StatusCode(404, result.Erros)
+                };
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { msg = $"Ocorreu um erro em sua API {ex.Message}" });
+            }
+        }
+
         [HttpPost]
         public ActionResult Create([FromBody] TarefaDTO Request)
         {
