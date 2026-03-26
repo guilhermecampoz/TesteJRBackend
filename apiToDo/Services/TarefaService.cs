@@ -51,5 +51,23 @@ namespace apiToDo.Services
             }
         }
 
+        public Result<List<Tarefa>> DeletarTarefa(int ID_TAREFA)
+        {
+            try
+            {
+                var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == ID_TAREFA);
+
+                if (tarefa == null)
+                    return Result<List<Tarefa>>.Falha(Erro.NotFound, new List<string> { "Não foi encontrada uma tarefa com o Id informado." });
+
+                _data.Tarefas.Remove(tarefa);
+
+                return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

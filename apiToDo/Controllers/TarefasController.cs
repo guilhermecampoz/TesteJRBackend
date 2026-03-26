@@ -58,8 +58,15 @@ namespace apiToDo.Controllers
         {
             try
             {
+                var result = _service.DeletarTarefa(ID_TAREFA);
+                if(result.ehSucesso)
+                    return StatusCode(200, result.Valor);
 
-                return StatusCode(200);
+                return result.TipoErro switch
+                {
+                    Erro.NotFound => StatusCode(404, result.Erros),
+                    _ => StatusCode(500, result.Erros)            
+                };
             }
             catch (Exception ex)
             {
