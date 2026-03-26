@@ -15,6 +15,7 @@ namespace apiToDo.Services
         {
             _data = data;
         }
+
         public Result<List<Tarefa>> ListarTarefas()
         {
             try
@@ -26,5 +27,29 @@ namespace apiToDo.Services
                 throw ex;
             }
         }
+
+        public Result<List<Tarefa>> InserirTarefa(TarefaDTO request)
+        {
+            try
+            {
+                if (request == null || string.IsNullOrEmpty(request.DS_TAREFA))
+                {
+                    return Result<List<Tarefa>>.Falha(Erro.Validation, new List<string> { "O nome da tarefa não pode ser vazio." });
+                }
+
+                int id = _data.Count;
+                Tarefa tarefa = new Tarefa();
+                tarefa.DS_TAREFA = request.DS_TAREFA;
+                tarefa.ID_TAREFA = id;
+                _data.Tarefas.Add(tarefa);
+
+                return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
