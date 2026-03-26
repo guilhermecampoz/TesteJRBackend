@@ -50,18 +50,20 @@ namespace apiToDo.Services
                 throw ex;
             }
         }
-
+        // recebe via parâmetro o id da tarefa informada na query
         public Result<List<Tarefa>> DeletarTarefa(int ID_TAREFA)
         {
             try
             {
+                // pesquisa no "banco" se há alguma tarefa com o Id informado na query
                 var tarefa = _data.Tarefas.FirstOrDefault(x => x.ID_TAREFA == ID_TAREFA);
-
+                // Valida se não encontrou
                 if (tarefa == null)
+                    // quando não encontra retorna falha do result pattern com tipo de erro NotFound para poder usar o status code correto na controller
                     return Result<List<Tarefa>>.Falha(Erro.NotFound, new List<string> { "Não foi encontrada uma tarefa com o Id informado." });
-
+                // se encontrar remove a tarefa via referência
                 _data.Tarefas.Remove(tarefa);
-
+                // retorna sucesso com a lista de tarefas atualizadas em memória da aplicação que foi configurada usando singleton na injeção de dependências
                 return Result<List<Tarefa>>.Sucesso(_data.Tarefas);
             }
             catch (Exception ex)

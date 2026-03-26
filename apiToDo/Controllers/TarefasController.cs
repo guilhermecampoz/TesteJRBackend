@@ -1,10 +1,8 @@
 ﻿using apiToDo.Common;
 using apiToDo.DTO;
-using apiToDo.Models;
 using apiToDo.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 
 namespace apiToDo.Controllers
 {
