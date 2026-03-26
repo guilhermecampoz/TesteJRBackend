@@ -46,7 +46,8 @@ namespace apiToDo.Controllers
 
                 return result.TipoErro switch
                 {
-                    Erro.NotFound => StatusCode(404, result.Erros)
+                    Erro.NotFound => StatusCode(404, result.Erros),
+                    _ => StatusCode(500, result.Erros)
                 };
             }
             catch (Exception ex)
